@@ -1,4 +1,4 @@
-# Ausländer Helper
+# AmtAssist
 
 A RAG-powered assistant that answers questions about German bureaucracy for international students in Berlin.
 
@@ -41,16 +41,17 @@ Building in public — roadmap and weekly progress updates below.
 
 ## Roadmap
 
-- [x] Week 1: Python environment + FastAPI running
-- [x] Week 2: Document ingestion pipeline
-- [ ] Week 3: Embeddings + ChromaDB setup
-- [ ] Week 4: Retrieval system
-- [ ] Week 5: Full RAG pipeline
-- [ ] Week 6: Frontend
-- [ ] Week 7: Deployment to Hugging Face Spaces
-- [ ] Week 8: Polish + error handling
-- [ ] Week 9: Blog post writeup
-- [ ] Week 10: Launch + feedback
+- [x] Local LLM integration (Ollama)
+- [x] Multi-URL document ingestion pipeline
+- [x] Text chunking with overlap
+- [x] Embedding pipeline (sentence-transformers)
+- [x] ChromaDB indexing with metadata
+- [x] Semantic retrieval verified
+- [ ] End-to-end RAG integration in FastAPI /ask endpoint
+- [ ] Frontend (HTML + JS)
+- [ ] Deployment to Hugging Face Spaces
+- [ ] Error handling and edge cases
+- [ ] Blog post documenting the build
 
 ## Why I'm Building This
 
