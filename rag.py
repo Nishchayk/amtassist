@@ -10,7 +10,7 @@ collection = chroma_client.get_collection(name="auslander_helper")
 
 
 
-def retrieve_contect(question:str, top_k:int = 4) -> dict:
+def retrieve_context(question:str, top_k:int = 4) -> dict:
 
     question_embedding = embedding_model.encode(question).tolist()
     results = collection.query(
@@ -23,20 +23,20 @@ def retrieve_contect(question:str, top_k:int = 4) -> dict:
     metadatas = results["metadatas"][0]
     distances = results["distances"][0]
 
-    contect_parts = []
+    context_parts = []
     sources = []
 
     for i, (chunk,meta,dist) in enumerate(zip(chunks,metadatas,distances),start=1):
-        contect_parts.append(f"[Source {i}]\n{chunk}")
+        context_parts.append(f"[Source {i}]\n{chunk}")
         sources.append({
             "source" : meta.get("source","unknow"),
             "distance":round(dist,3)
         })
 
-    contect = "\n\n".join(contect_parts)
+    context = "\n\n".join(context_parts)
 
     return{
-        "context":contect,
+        "context":context,
         "sources":sources,
         "num_chunks":len(chunks)
     }
@@ -44,7 +44,7 @@ def retrieve_contect(question:str, top_k:int = 4) -> dict:
 if __name__ == "__main__":
     test_question = "how do I register my address in berlin"
     print(f"\n test question : {test_question}\n")
-    result = retrieve_contect(test_question)
+    result = retrieve_context(test_question)
     print(f"Retrieved {result['num_chunks']} chunks")
     print(f"Sources: {result['sources']}\n")
     print("--- Context ---")

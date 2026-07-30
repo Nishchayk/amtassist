@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmtAssist — Berlin Bureaucracy Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AmtAssist</h1>
+            <p class="subtitle">A RAG assistant for German bureaucracy — grounded in real sources.</p>
+        </header>
+
+        <main>
+            <section class="ask-section">
+                <label for="question">Ask a question about Berlin bureaucracy:</label>
+                <textarea 
+                    id="question" 
+                    placeholder="e.g. How do I register my address in Berlin?" 
+                    rows="3"
+                ></textarea>
+                <button id="ask-button">Ask</button>
+            </section>
+
+            <section id="response-section" class="hidden">
+                <div id="loading" class="hidden">
+                    <p>Searching sources and generating answer...</p>
+                </div>
+
+                <div id="answer-container" class="hidden">
+                    <h2>Answer</h2>
+                    <p id="answer"></p>
+
+                    <h3>Sources</h3>
+                    <ul id="sources"></ul>
+                </div>
+
+                <div id="error" class="hidden">
+                    <p class="error-message"></p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Built by Nishchay Krishnappa · Sources: allaboutberlin.com</p>
+            <p><a href="https://github.com/Nishchayk/amtassist" target="_blank">View on GitHub</a></p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

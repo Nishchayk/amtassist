@@ -1,16 +1,20 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 import ollama
-from rag import retrieve_contect
+from rag import retrieve_context
 
 app = FastAPI()
 
+app.mount("/static",StaticFiles(directory="static"),name="static")
+
 @app.get("/")
 def read_root():
-    return{"Hello" : "World"}
+    return FileResponse("static/index.html")
 
 @app.get("/ask")
 async def ask_question(question:str):
-    retrieval = retrieve_contect(question, top_k=4)
+    retrieval = retrieve_context(question, top_k=4)
     context = retrieval["context"]
     sources = retrieval["sources"]
 
